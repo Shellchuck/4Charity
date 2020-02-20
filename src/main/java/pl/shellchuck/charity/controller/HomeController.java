@@ -1,4 +1,4 @@
-package pl.shellchuck.charity;
+package pl.shellchuck.charity.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
