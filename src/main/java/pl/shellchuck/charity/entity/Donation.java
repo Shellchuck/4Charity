@@ -30,7 +30,7 @@ public class Donation {
     private List<Category> categories = new ArrayList<>();
 
     @ManyToOne
-    private Institution Institution;
+    private Institution institution;
 
     private String street;
 
@@ -41,7 +41,6 @@ public class Donation {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalTime pickUpTime;
 
     private String pickUpComment;
