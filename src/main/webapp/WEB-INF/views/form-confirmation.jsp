@@ -31,7 +31,7 @@
             </li>
         </ul>
 
-        <jsp:include page="header_menu.jsp"/>
+        <%@include file="header_menu.jsp" %>
     </nav>
 
     <div class="slogan container container--90">
@@ -42,7 +42,7 @@
     </div>
 </header>
 
-<jsp:include page="footer.jsp"/>
+<%@include file="footer.jsp" %>
 
 <script src="<c:url value="/resources/js/app.js"/>"></script>
 </body>

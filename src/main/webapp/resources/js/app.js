@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * Form Select
@@ -164,7 +164,40 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+      // Adres
+      document.getElementById("summaryCity").innerText = document.getElementById("city").value;
+      document.getElementById("summaryStreet").innerText = document.getElementById("street").value;
+      document.getElementById("summaryZipCode").innerText = document.getElementById("zipCode").value;
+
+      //Termin odbioru
+      document.getElementById("summaryPickUpDate").innerText = document.getElementById("pickUpDate").value;
+      document.getElementById("summaryPickUpTime").innerText = document.getElementById("pickUpTime").value;
+      let comment = document.getElementById("pickUpComment").value;
+      if(comment == "") {
+        document.getElementById("summaryPickUpComment").innerText = "Brak uwag";
+      } else {
+        document.getElementById("summaryPickUpComment").innerText = comment;
+      }
+
+      document.getElementById("summaryBag").innerText = document.getElementById("quantity").value;
+
+      document.getElementById("summaryCategory").innerText = "";
+      document.querySelectorAll("div[data-step=\"1\"] div.form-group--checkbox label input").forEach(function (item, index) {
+        if(item.checked) {
+          var text = item.parentElement.querySelector("span.description").innerText;
+          document.getElementById("summaryCategory").innerText = document.getElementById("summaryCategory").innerText + " " + text;
+        }
+      });
+
+      let institution = document.querySelector("div[data-step=\"3\"] div.form-group--checkbox label input:checked");
+      document.getElementById("summaryInstitution").innerText = institution.parentElement.querySelector("span.description div.title").innerText;
+
+
+      document.querySelectorAll("button.next-step").forEach(function (item) {
+        item.addEventListener("click", updateSummary)
+      });
     }
+
 
   }
   const form = document.querySelector(".form--steps");
