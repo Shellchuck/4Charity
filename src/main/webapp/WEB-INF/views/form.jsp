@@ -34,7 +34,7 @@
             </li>
         </ul>
 
-        <jsp:include page="header_menu.jsp"/>
+        <%@include file="header_menu.jsp" %>
     </nav>
 
     <div class="slogan container container--90">
@@ -136,11 +136,9 @@
                             <input type="radio" name="institution" value="${institution.id}"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
-                  <div class="title"><c:out value="${institution.name}"/></div>
-                  <div class="subtitle">
-                    Cel i misja: <c:out value="${institution.description}"/>
-                  </div>
-                </span>
+                                <div class="title"><c:out value="${institution.name}"/></div>
+                                <div class="subtitle">Cel i misja: <c:out value="${institution.description}"/></div>
+                            </span>
                         </label>
                     </div>
                 </C:forEach>
@@ -198,61 +196,56 @@
             </div>
 
             <!-- STEP 5 -->
-            <div data-step="5">
-                <h3>Podsumowanie Twojej darowizny</h3>
+        <div data-step="5">
+            <h3>Podsumowanie Twojej darowizny</h3>
 
-                <div class="summary">
-                    <div class="form-section">
-                        <h4>Oddajesz:</h4>
+            <div class="summary">
+                <div class="form-section">
+                    <h4>Oddajesz:</h4>
+                    <ul>
+                        <li>
+                            <span class="icon icon-bag"></span>
+                            Ilość worków:&nbsp;<span class="summary--text" id="summaryBag"></span>&nbsp;o zawartości:&nbsp;<span class="summary--text" id="summaryCategory"></span>
+                        </li>
+
+                        <li>
+                            <span class="icon icon-hand"></span>
+                            Dla fundacji:&nbsp;"<span class="summary--text" id="summaryInstitution"></span>"
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="form-section form-section--columns">
+                    <div class="form-section--column">
+                        <h4>Adres odbioru:</h4>
                         <ul>
-                            <li>
-                                <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                ></span
-                                >
-                            </li>
-
-                            <li>
-                                <span class="icon icon-hand"></span>
-                                <span class="summary--text"
-                                ></span
-                                >
-                            </li>
+                            <li id="summaryCity"></li>
+                            <li id="summaryStreet"></li>
+                            <li id="summaryZipCode"></li>
+                            <li></li>
                         </ul>
                     </div>
 
-                    <div class="form-section form-section--columns">
-                        <div class="form-section--column">
-                            <h4>Adres odbioru:</h4>
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </div>
-
-                        <div class="form-section--column">
-                            <h4>Termin odbioru:</h4>
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </div>
+                    <div class="form-section--column">
+                        <h4>Termin odbioru:</h4>
+                        <ul>
+                            <li id="summaryPickUpDate"></li>
+                            <li id="summaryPickUpTime"></li>
+                            <li id="summaryPickUpComment"></li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="form-group form-group--buttons">
-                    <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="submit" class="btn">Potwierdzam</button>
-                </div>
             </div>
+            <div class="form-group form-group--buttons">
+                <button type="button" class="btn prev-step">Wstecz</button>
+                <button type="submit" class="btn">Potwierdzam</button>
+            </div>
+        </div>
         </form:form>
     </div>
 </section>
 
-<jsp:include page="footer.jsp"/>
+<%@include file="footer.jsp" %>
 
 <script src="<c:url value="/resources/js/app.js"/>"></script>
 </body>

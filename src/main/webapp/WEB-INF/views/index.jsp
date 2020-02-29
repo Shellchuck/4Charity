@@ -15,17 +15,9 @@
 <body>
 
 
+<%@include file="header_menu.jsp" %>
+
 <header class="header--main-page">
-
-    <nav class="container container--70">
-        <ul class="nav--actions">
-            <li><a href="" class="btn btn--small btn--without-border">Zaloguj</a></li>
-            <li><a href="#" class="btn btn--small btn--highlighted">Załóż konto</a></li>
-        </ul>
-
-        <jsp:include page="header_menu.jsp"/>
-
-    </nav>
 
     <div class="slogan container container--90">
         <div class="slogan--item">
@@ -91,9 +83,9 @@
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
             optio esse quisquam illo omnis.</p>
-        <img src="<c:url value="resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
+        <img src="<c:url value="/resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
     </div>
-    <div class="about-us--image"><img src="<c:url value="resources/images/about-us.jpg"/>" alt="People in circle"/>
+    <div class="about-us--image"><img src="<c:url value="/resources/images/about-us.jpg"/>" alt="People in circle"/>
     </div>
 </section>
 
@@ -132,7 +124,7 @@
 
 </section>
 
-<jsp:include page="footer.jsp"/>
+<%@include file="footer.jsp" %>
 
 <script src="<c:url value="/resources/js/app.js"/>"></script>
 </body>

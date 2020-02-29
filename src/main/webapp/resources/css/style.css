@@ -856,6 +856,12 @@ header.header--main-page {
   height: 100vh;
 }
 
+header.common-header {
+  background-size: 70vw;
+  /*height: 10vh;*/
+}
+
+
 @media (min-width: 990px) and (max-width: 1230px) {
   /* line 2, scss/modules/_header.scss */
   header.header--main-page {
