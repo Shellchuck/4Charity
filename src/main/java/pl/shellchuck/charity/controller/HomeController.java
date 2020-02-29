@@ -3,37 +3,24 @@ package pl.shellchuck.charity.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.shellchuck.charity.entity.Donation;
-import pl.shellchuck.charity.entity.Institution;
-import pl.shellchuck.charity.repository.DonationRepository;
-import pl.shellchuck.charity.repository.InstitutionRepository;
-
-import java.util.List;
+import pl.shellchuck.charity.service.HomeService;
 
 
 @Controller
 public class HomeController {
 
-    private InstitutionRepository institutionRepository;
-    private DonationRepository donationRepository;
+    private HomeService homeService;
 
-    public HomeController(InstitutionRepository institutionRepository, DonationRepository donationRepository) {
-        this.institutionRepository = institutionRepository;
-        this.donationRepository = donationRepository;
+    public HomeController(HomeService homeService) {
+        this.homeService = homeService;
     }
 
     @RequestMapping("")
-    public String homeAction(Model model){
-        List<Institution> institutions = institutionRepository.findAll();
-        model.addAttribute("institutions", institutions);
-        List<Donation> allDonations = donationRepository.findAll();
-        int allGifts = 0;
-        for (Donation donation : allDonations) {
-            allGifts += donation.getQuantity();
-        }
-        model.addAttribute("allGifts", allGifts);
-        int donationsNumber = allDonations.size();
-        model.addAttribute("donationsNumber", donationsNumber);
+    public String homeAction(Model model) {
+        model.addAttribute("allGifts", homeService.giftsSum());
+        model.addAttribute("donationsNumber", homeService.donationsSum());
+        model.addAttribute("institutions", homeService.listInstitutions());
         return "index";
     }
+
 }
