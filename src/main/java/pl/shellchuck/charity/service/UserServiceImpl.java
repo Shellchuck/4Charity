@@ -1,5 +1,6 @@
 package pl.shellchuck.charity.service;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.shellchuck.charity.entity.Role;
 import pl.shellchuck.charity.entity.User;
@@ -13,15 +14,18 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private RoleRepository roleRepository;
+    private BCryptPasswordEncoder passwordEncoder;
 
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void addUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
         HashSet<Role> roles = new HashSet<>();
         roles.add(roleRepository.findByName("ROLE_USER"));
@@ -29,10 +33,9 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-
     @Override
-    public User findByUserName(String name) {
-        return userRepository.findByName(name);
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 }

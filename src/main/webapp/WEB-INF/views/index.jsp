@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -14,10 +15,24 @@
 </head>
 <body>
 
-
-<%@include file="header_menu.jsp" %>
-
 <header class="header--main-page">
+    <nav class="container container--70">
+        <ul class="nav--actions">
+            <sec:authorize access="!(isAuthenticated())">
+                        <li><a href="<c:url value="/login" />" class="btn btn--small btn--without-border">Zaloguj</a></li>
+                        <li><a href="<c:url value="/register" />" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+            </sec:authorize>
+
+            <sec:authorize access="isAuthenticated()">
+                <li><p>Witaj <sec:authentication property="name"/></p></li>
+                <li><form action="<c:url value="/logout"/>" method="post">
+                    <input type="submit" value="Wyloguj" class="btn btn--small btn--highlighted">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form></li>
+            </sec:authorize>
+        </ul>
+        <%@include file="header_menu.jsp" %>
+    </nav>
 
     <div class="slogan container container--90">
         <div class="slogan--item">
