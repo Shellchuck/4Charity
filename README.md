@@ -12,4 +12,4 @@ The aim of this application is to create a virtual place where everyone can give
 </ul>
 <hr><br>
 Building of the application is still in progress and is likely to
-be completed by the end of February.
+be completed in the mid of March.
