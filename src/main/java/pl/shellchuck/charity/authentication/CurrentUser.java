@@ -19,4 +19,6 @@ public class CurrentUser extends User {
     public pl.shellchuck.charity.entity.User getUser() {
         return user;
     }
+
+
 }

@@ -52,4 +52,10 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @GetMapping("/403")
+    public String accesdDenied() {
+        return "403";
+    }
+
+
 }
