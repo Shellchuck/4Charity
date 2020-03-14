@@ -34,15 +34,19 @@
       <form:form method="post" modelAttribute="user">
         <div class="form-group">
           <form:input path="name" placeholder="Imię" />
+          <p class="errors"><form:errors path="name"/></p>
         </div>
         <div class="form-group">
           <form:input path="surname" placeholder="Nazwisko" />
+          <p class="errors"><form:errors path="surname"/></p>
         </div>
         <div class="form-group">
           <form:input type="email" path="email" placeholder="Email" />
+          <p class="errors"><form:errors path="email"/></p>
         </div>
         <div class="form-group">
           <form:password path="password" placeholder="Hasło" />
+          <p class="errors"><form:errors path="password"/></p>
         </div>
         <%--<div class="form-group">
           <form:input type="password" path="password2" placeholder="Powtórz hasło" />

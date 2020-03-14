@@ -2,6 +2,7 @@ package pl.shellchuck.charity.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.shellchuck.charity.entity.User;
 import pl.shellchuck.charity.service.HomeService;
 import pl.shellchuck.charity.service.UserService;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -37,7 +40,10 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user) {
+    public String registerUser(@Valid User user, BindingResult result) {
+        if (result.hasErrors()) {
+            return "register";
+        }
         userService.addUser(user);
         return "redirect:/";
     }

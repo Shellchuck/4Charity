@@ -2,6 +2,7 @@ package pl.shellchuck.charity.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,8 @@ import pl.shellchuck.charity.entity.Donation;
 import pl.shellchuck.charity.service.CategoryService;
 import pl.shellchuck.charity.service.DonationService;
 import pl.shellchuck.charity.service.InstitutionService;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/donation")
@@ -34,7 +37,10 @@ public class DonationController {
     }
 
     @PostMapping("/add")
-    public String Donate(@ModelAttribute Donation donation) {
+    public String Donate(@Valid Donation donation, BindingResult result) {
+        if (result.hasErrors()) {
+            return "form";
+        }
         donationService.addDonation(donation);
         return "form-confirmation";
     }
