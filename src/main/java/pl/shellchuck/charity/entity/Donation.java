@@ -30,6 +30,7 @@ public class Donation {
     @NotNull
     private Integer quantity;
 
+    @NotEmpty
     @ManyToMany
     private List<Category> categories = new ArrayList<>();
 

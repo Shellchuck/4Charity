@@ -26,17 +26,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Pole \"Imię\" nie może być puste")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Pole \"Nazwisko\" nie może być puste")
     private String surname;
 
     @Email
+    @NotBlank(message = "Proszę podać adres mailowy")
     @Column(nullable = false, unique = true)
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Proszę podać hasło do serwisu")
     private String password;
 
     private int enabled;
