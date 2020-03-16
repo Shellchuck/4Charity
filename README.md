@@ -10,6 +10,4 @@ The aim of this application is to create a virtual place where everyone can give
 <li>MySQL database</li>
 <li>Spring Security</li>
 </ul>
-<hr><br>
-Building of the application is still in progress and is likely to
-be completed in the mid of March.
+<hr>
