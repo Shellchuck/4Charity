@@ -2,8 +2,10 @@ package pl.shellchuck.charity.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import pl.shellchuck.charity.entity.Category;
 import pl.shellchuck.charity.repository.CategoryRepository;
+
 
 public class CategoryConverter implements Converter<String, Category> {
     @Autowired

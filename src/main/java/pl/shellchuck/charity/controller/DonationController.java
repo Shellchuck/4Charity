@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import pl.shellchuck.charity.entity.Donation;
 import pl.shellchuck.charity.service.CategoryService;
 import pl.shellchuck.charity.service.DonationService;
@@ -37,7 +38,7 @@ public class DonationController {
     }
 
     @PostMapping("/add")
-    public String Donate(@Valid Donation donation, BindingResult result) {
+    public String Donate(@Valid @ModelAttribute("donation") Donation donation, BindingResult result) {
         if (result.hasErrors()) {
             return "form";
         }
