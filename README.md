@@ -10,4 +10,6 @@ The aim of this application is to create a virtual place where everyone can give
 <li>MySQL database</li>
 <li>Spring Security</li>
 </ul>
+<h5>Testing:</h5>
+Unit tests of repositories, services and controllers and integration tests made using JUnit library, Mockito and MockMvc class.
 <hr>
